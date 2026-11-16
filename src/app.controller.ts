@@ -1,10 +1,9 @@
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 
-@Controller('travel')
-export class TravelController {
-
-  @Post()
-  create(): string {
-    return 'planifier un noveaux voiyage ici';
+@Controller()
+export class AppController {
+  @Get()
+  getHello(): string {
+    return 'Hello World!';
   }
 }
