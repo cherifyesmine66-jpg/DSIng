@@ -1,9 +1,23 @@
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Get, Post, Param } from '@nestjs/common';
+import { TravelService } from './travel.service.js';
 
 @Controller('travel')
 export class TravelController {
+
+  constructor(private readonly travelService: TravelService) {}
+
   @Post()
   create(): string {
     return 'planifier un noveaux voiyage ici';
+  }
+
+  @Get()
+  findAll() {
+    return this.travelService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.travelService.findOne(Number(id));
   }
 }
